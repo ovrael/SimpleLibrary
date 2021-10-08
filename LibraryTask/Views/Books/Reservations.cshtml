@@ -1,0 +1,45 @@
+﻿@model BookReservationsModel
+
+@{
+	ViewData["Title"] = "Reservations";
+}
+
+<h1>"@Model.BookTitle" reservations</h1>
+
+@{
+	if (Model.Reservations.Count == 0)
+	{
+		<h3>Book has no reservations yet.</h3>
+	}
+	else
+	{
+		<table class="table" style="width:50%;">
+			<thead>
+				<tr>
+					<th style="width:40%;">
+						Reservation date
+						</th>
+					<th style="width:60%;">
+						User
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var reservation in Model.Reservations)
+				{
+					<tr>
+						<td>
+							@Html.DisplayFor(modelItem => reservation.ReservationDate)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => reservation.User.Login)
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	}
+}
+<div class="form-group">
+	<a class="btn btn-outline-warning" asp-action="List">Back to List</a>
+</div>
