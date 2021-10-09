@@ -12,19 +12,19 @@
 
 <div class="d-flex justify-content-between">
 	<div>
-<h1>List of books</h1>
+		<h1>List of books</h1>
 
 	</div>
-@{
-	if (userIsLogged)
-	{	
-	<div>
-			<form>
-				<a class="btn btn-outline-primary mr-1" asp-action="Create">Create new book</a>
-			</form>
-	</div>
+	@{
+		if (userIsLogged)
+		{
+			<div>
+				<form>
+					<a class="btn btn-outline-primary mr-1" asp-action="Create">Create new book</a>
+				</form>
+			</div>
+		}
 	}
-}
 
 </div>
 
@@ -81,7 +81,7 @@
 						if (userIsLogged)
 						{
 							<form>
-								<a class="btn btn-outline-success mr-1" asp-action="BookIt" asp-route-id="@item.BookID">Book it!</a>
+								<a class="btn btn-outline-success mr-1" asp-action="RequestBook" asp-route-id="@item.BookID">Request</a>
 								<a class="btn btn-outline-warning mr-1" asp-action="Edit" asp-route-id="@item.BookID">Edit</a>
 								<a class="btn btn-outline-info mr-1" asp-action="Reservations" asp-route-id="@item.BookID"> Reservations </a>
 							</form>

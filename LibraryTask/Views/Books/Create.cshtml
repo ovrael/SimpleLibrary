@@ -28,7 +28,8 @@
 			</div>
 			<div class="form-group">
 				<label asp-for="Description" class="control-label"></label>
-				<textarea asp-for="Description" class="form-control"></textarea>
+				<textarea maxlength="@DatabaseAccess.Database.Book.DescriptionMaxLength" asp-for="Description" class="form-control"></textarea>
+				<small class="form-text text-danger">*Max length of description: @DatabaseAccess.Database.Book.DescriptionMaxLength</small>
 				<span asp-validation-for="Description" class="text-danger"></span>
 			</div>
 			<div class="form-group d-flex justify-content-between">

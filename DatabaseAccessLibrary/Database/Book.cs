@@ -24,6 +24,9 @@ namespace DatabaseAccess.Database
 		[DataType(DataType.Date)]
 		public DateTime PublishDate { get; set; }
 
+		[NotMapped]
+		public static int DescriptionMaxLength { get; } = 150;
+
 		[Required]
 		[MaxLength(150)]
 		public string Description { get; set; }

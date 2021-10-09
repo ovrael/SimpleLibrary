@@ -13,6 +13,9 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using DatabaseAccess.Access;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNet.Identity.EntityFramework;
+using DatabaseAccess.Database;
+using Microsoft.AspNetCore.Identity;
 
 namespace LibraryTask
 {
@@ -48,7 +51,6 @@ namespace LibraryTask
 
 			services.AddDbContext<LibraryContext>(options =>
 			{
-				// options.UseLazyLoadingProxies().UseSqlServer(Configuration.GetConnectionString("Default"));
 				options.UseSqlServer(Configuration.GetConnectionString("Default"));
 			});
 
@@ -57,7 +59,6 @@ namespace LibraryTask
 				{
 					options.LoginPath = "/User/Login";
 					options.Cookie.Name = "LoginCookie";
-					//options.ExpireTimeSpan = TimeSpan.FromMinutes(10);
 				});
 
 			services.AddMvc();

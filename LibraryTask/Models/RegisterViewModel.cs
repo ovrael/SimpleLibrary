@@ -10,15 +10,18 @@ namespace LibraryTask.Models
 	{
 		[Required]
 		[DataType(DataType.Text)]
+		[RegularExpression(@"(\S)+", ErrorMessage = "White Space is not allowed")]
 		public string Name { get; set; }
 
 		[Required]
 		[DataType(DataType.Text)]
 		[Display(Name = "Last Name")]
+		[RegularExpression(@"(\S)+", ErrorMessage = "White Space is not allowed")]
 		public string LastName { get; set; }
 
 		[Required]
 		[DataType(DataType.Text)]
+		[RegularExpression(@"(\S)+", ErrorMessage = "White Space is not allowed")]
 		public string Login { get; set; }
 
 		[Required]
@@ -33,6 +36,10 @@ namespace LibraryTask.Models
 
 		[Required]
 		[DataType(DataType.Password)]
+		[StringLength(100, ErrorMessage = "Password must be at least 8 characters long.", MinimumLength = 8)]
+		[RegularExpression("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$",
+			ErrorMessage = "Passwords must be at least 8 characters and contain at least 1 lower case letter, 1 upper case letter, 1 number and 1 special character (e.g. !@#$%^&*)")]
+
 		public string Password { get; set; }
 
 		[DataType(DataType.Password)]

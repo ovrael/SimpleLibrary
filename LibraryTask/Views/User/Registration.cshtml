@@ -4,6 +4,20 @@
 	ViewBag.Title = "User Registration";
 }
 
+<script>
+	function PasswordVisibility() {
+		var pwd = document.getElementById("pwd");
+		var cPwd = document.getElementById("cPwd");
+		if (pwd.type === "password") {
+			pwd.type = "text";
+			cPwd.type = "text";
+		} else {
+			pwd.type = "password";
+			cPwd.type = "password";
+		}
+}
+</script>
+
 <h1>Registration</h1>
 
 <div class="row">
@@ -16,18 +30,18 @@
 			</div>
 			<div class="form-group">
 				<label asp-for="LastName"></label>
-				<input asp-for="LastName" class="form-control" style="width:15%;"/>
+				<input asp-for="LastName" class="form-control" style="width:15%;" />
 				<span asp-validation-for="LastName" class="text-danger"></span>
 			</div>
 			<div class="form-group">
 				<label asp-for="Login"></label>
-				<input asp-for="Login" class="form-control" style="width:15%;"/>
+				<input asp-for="Login" class="form-control" style="width:15%;" />
 				<span asp-validation-for="Login" class="text-danger"></span>
 			</div>
 			<div class="form-group">
 				<label asp-for="Email"></label>*
-				<input asp-for="Email" class="form-control" style="width:15%;"/>
-				<small class="form-text text-danger">*We use email for sign in form, we do not send emails to you.</small>
+				<input asp-for="Email" class="form-control" style="width:15%;" />
+				<small class="form-text text-danger">*We use email only for sign in form, we do not send emails to you.</small>
 				<span asp-validation-for="Email" class="text-danger"></span>
 			</div>
 			@{
@@ -43,17 +57,20 @@
 			}
 			<div class="form-group">
 				<label asp-for="ConfirmEmail"></label>
-				<input asp-for="ConfirmEmail" class="form-control" style="width:15%;"/>
+				<input asp-for="ConfirmEmail" class="form-control" style="width:15%;" />
 				<span asp-validation-for="ConfirmEmail" class="text-danger"></span>
 			</div>
 			<div class="form-group">
 				<label asp-for="Password"></label>
-				<input asp-for="Password" class="form-control" style="width:15%;"/>
+				<div class="row">
+					<input id="pwd" asp-for="Password" class="form-control ml-3" style="width:15%;" />
+					<button type="button" class="btn btn-sm btn-outline-danger ml-5" onclick="PasswordVisibility()">Show password</button>
+				</div>
 				<span asp-validation-for="Password" class="text-danger"></span>
 			</div>
 			<div class="form-group">
 				<label asp-for="ConfirmPassword"></label>
-				<input asp-for="ConfirmPassword" class="form-control" style="width:15%;"/>
+				<input id="cPwd" asp-for="ConfirmPassword" class="form-control" style="width:15%;" />
 				<span asp-validation-for="ConfirmPassword" class="text-danger"></span>
 			</div>
 			<button type="submit" class="btn btn-primary">Register</button>

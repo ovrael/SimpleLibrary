@@ -53,7 +53,7 @@ namespace LibraryTask.Controllers
 			return View(book);
 		}
 
-		public IActionResult BookIt(int id)
+		public IActionResult RequestBook(int id)
 		{
 			Book book = libraryContext.Books.FirstOrDefault(b => b.BookID == id);
 			User user = libraryContext.Users.FirstOrDefault(u => u.Login.Equals(User.Identity.Name));
@@ -66,7 +66,7 @@ namespace LibraryTask.Controllers
 			Reservation reservation = libraryContext.Reservations.FirstOrDefault(r => r.Book == book && r.User == user);
 			if (reservation != null)
 			{
-				return RedirectToAction("List", "Books", new { message = "You already reserved book: " + book.Title + ".", success = false });
+				return RedirectToAction("List", "Books", new { message = "You already requested book: " + book.Title + ".", success = false });
 			}
 			else
 			{
